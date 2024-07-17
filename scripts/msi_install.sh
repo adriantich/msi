@@ -99,6 +99,7 @@ function install_fastq_utils {
     # wget -c $fastq_utils_URL -O tmp.tar.gz
     # tar -zxvf tmp.tar.gz
     git clone https://github.com/adriantich/fastq_utils.git
+    pinfo "...fastq_utils cloned..."
     # pushd fastq_utils-${fastq_utils_VERSION}
     pushd fastq_utils
     CFLAGS=  ./install_deps.sh
