@@ -44,7 +44,7 @@ metabinkit_VERSION=0.2.3
 metabinkit_URL=https://github.com/envmetagen/metabinkit/archive/${metabinkit_VERSION}.tar.gz
 
 fastq_utils_VERSION=0.25.2
-fastq_utils_URL=https://github.com/nunofonseca/fastq_utils/archive/$fastq_utils_VERSION.tar.gz
+# fastq_utils_URL=https://github.com/nunofonseca/fastq_utils/archive/$fastq_utils_VERSION.tar.gz
 
 FASTQC_VERSION=0.11.9
 FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip
@@ -95,15 +95,18 @@ function install_blast_db {
 
 function install_fastq_utils {
     pinfo "Installing fastq_utils..."
-    rm -f tmp.tar.gz
-    wget -c $fastq_utils_URL -O tmp.tar.gz
-    tar -zxvf tmp.tar.gz
-    pushd fastq_utils-${fastq_utils_VERSION}
+    # rm -f tmp.tar.gz
+    # wget -c $fastq_utils_URL -O tmp.tar.gz
+    # tar -zxvf tmp.tar.gz
+    git clone https://github.com/adriantich/fastq_utils.git
+    # pushd fastq_utils-${fastq_utils_VERSION}
+    pushd fastq_utils
     CFLAGS=  ./install_deps.sh
     make install
     cp bin/fast* bin/bam*  $INSTALL_BIN
     popd
-    rm -rf fastq_utils-${fastq_utils_VERSION} tmp.tar.gz
+    # rm -rf fastq_utils-${fastq_utils_VERSION} tmp.tar.gz
+    rm -rf fastq_utils tmp.tar.gz
     pinfo "Installing fastq_utils...done."
 }
 
