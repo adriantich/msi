@@ -180,7 +180,7 @@ function install_minimap2 {
     pushd $TEMP_FOLDER
     rm -f tmp.tar.gz
     wget -c $minimap2_URL -O tmp.tar.gz
-    tar -jxvf tmp.tar.gz
+    tar -jxvf tmp.tar.gz --no-same-owner
     cp minimap2-${minimap2_VERSION}_x64-linux/{minimap2,k8,paftools.js} $INSTALL_BIN
     rm -rf minimap2-${minimap2_VERSION}_x64-linux  tmp.tar.gz
     popd
@@ -209,8 +209,8 @@ function install_msi {
     pinfo "Installing msi..."
     pushd $PATH2SCRIPT/..
     cp scripts/* $INSTALL_BIN
-    cp -r LICENSE README.md $INSTALL_DIR
-    cp -r template $INSTALL_DIR
+    # cp -r LICENSE README.md $INSTALL_DIR
+    # cp -r template $INSTALL_DIR
     popd
     pinfo "Installing msi...done."
 }
@@ -272,8 +272,12 @@ packages2install<-c("Matrix","data.table","devtools","shiny","plotly","DT","r2d3
 
 for (p in packages2install ) {
   message("PACKAGE:",p,"\n")
-  if ( usebiocmanager ) BiocManager::install(p,ask=FALSE)
-  else  biocLite(p,ask=FALSE)
+  if (!require(p,character.only=TRUE)) {
+    if ( usebiocmanager ) BiocManager::install(p,ask=FALSE)
+    else  biocLite(p,ask=FALSE)
+  } else {
+    message("PACKAGE:",p," already installed\n")
+  } 
 }
 
 #message("PACKAGE:","d3treeR","\n")
