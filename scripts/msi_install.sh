@@ -234,7 +234,8 @@ function install_cd-hit {
 function install_R_packages {
     mkdir -p $INSTALL_DIR/Rlibs
     R_LIBS_USER=$INSTALL_DIR/Rlibs R --vanilla <<EOF
-repo<-"http://www.stats.bris.ac.uk/R/"
+# repo<-"http://www.stats.bris.ac.uk/R/"
+repo<-"https://stat.ethz.ch/CRAN/"
 
 ########################
 # Check if version is ok
