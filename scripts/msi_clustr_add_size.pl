@@ -96,7 +96,7 @@ while (my $line = <$fh>) {
 	##print STDERR ">>>>>$representative<< ===== >>$rline<< \n";
 	$nmembers=$nmembers_h{"$representative"};
 	$nreads=$nreads_h{"$representative"};
-	if ( $nreads eq "" || nmembers eq "") {
+	if ( $nreads eq "" || $nmembers eq "") {
 	       print STDERR "$representative not found in  stdin";
 	       exit 1;
 	}
