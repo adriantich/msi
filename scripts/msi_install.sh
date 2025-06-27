@@ -47,7 +47,7 @@ fastq_utils_VERSION=0.25.2
 # fastq_utils_URL=https://github.com/nunofonseca/fastq_utils/archive/$fastq_utils_VERSION.tar.gz
 
 FASTQC_VERSION=0.12.1
-FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip
+FASTQC_URL=https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip
 
 ##
 
